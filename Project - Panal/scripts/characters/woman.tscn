@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0lrdglcepxgi"]
+
+[ext_resource type="Script" path="res://scripts/characters/character.gd" id="1_7j0pe"]
+[ext_resource type="PackedScene" uid="uid://s4y0s0smiecc" path="res://scripts/weapons/wooden_shield.tscn" id="2_udv4g"]
+
+[node name="Woman" type="Node" node_paths=PackedStringArray("weapon")]
+script = ExtResource("1_7j0pe")
+ch_name = "woman"
+health = 20
+weapon = NodePath("WoodenSword")
+
+[node name="WoodenSword" parent="." instance=ExtResource("2_udv4g")]

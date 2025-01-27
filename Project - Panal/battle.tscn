@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://wndfi4e5oss"]
+
+[ext_resource type="PackedScene" uid="uid://b0lrdglcepxgi" path="res://scripts/characters/woman.tscn" id="1_r3j2d"]
+[ext_resource type="Script" path="res://battle_manager.gd" id="2_nmx6e"]
+[ext_resource type="PackedScene" uid="uid://b6yb4557w3x6" path="res://scripts/enemies/bob.tscn" id="3_e4wji"]
+
+[node name="Battle" type="Node"]
+
+[node name="party_manager" type="Node" parent="."]
+
+[node name="Woman" parent="party_manager" instance=ExtResource("1_r3j2d")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1150.0
+offset_bottom = 646.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+offset_left = 71.0
+offset_top = 314.0
+offset_right = 296.0
+offset_bottom = 602.0
+color = Color(0.05, 0, 0.25, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 109.0
+offset_top = 557.0
+offset_right = 149.0
+offset_bottom = 580.0
+text = "HP : "
+
+[node name="character_select" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 70.0
+offset_top = 315.0
+offset_right = 434.0
+offset_bottom = 549.0
+
+[node name="Button" type="Button" parent="CanvasLayer/character_select"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "charater 1"
+
+[node name="Button2" type="Button" parent="CanvasLayer/character_select"]
+layout_mode = 2
+text = "charater 2"
+
+[node name="Button3" type="Button" parent="CanvasLayer/character_select"]
+layout_mode = 2
+text = "charater 3"
+
+[node name="Button4" type="Button" parent="CanvasLayer/character_select"]
+layout_mode = 2
+text = "charater 4
+"
+
+[node name="combat_options" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 452.0
+offset_top = 319.0
+offset_right = 816.0
+offset_bottom = 553.0
+
+[node name="Attack" type="Button" parent="CanvasLayer/combat_options"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "attack"
+
+[node name="enemies" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 451.0
+offset_top = 50.0
+offset_right = 815.0
+offset_bottom = 284.0
+
+[node name="enemy1" type="Button" parent="CanvasLayer/enemies"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "charater 1"
+
+[node name="enemy2" type="Button" parent="CanvasLayer/enemies"]
+layout_mode = 2
+text = "charater 2"
+
+[node name="enemy3" type="Button" parent="CanvasLayer/enemies"]
+layout_mode = 2
+text = "charater 3"
+
+[node name="enemy4" type="Button" parent="CanvasLayer/enemies"]
+layout_mode = 2
+text = "charater 4
+"
+
+[node name="battle_manager" type="Node" parent="." node_paths=PackedStringArray("character1", "character2", "character3", "character4", "enemy1", "enemy2", "enemy3", "enemy4")]
+script = ExtResource("2_nmx6e")
+character1 = NodePath("../party_manager/Woman")
+character2 = NodePath("../party_manager/Woman")
+character3 = NodePath("../party_manager/Woman")
+character4 = NodePath("../party_manager/Woman")
+enemy1 = NodePath("../enemies_party/Bob")
+enemy2 = NodePath("../enemies_party/Bob")
+enemy3 = NodePath("../enemies_party/Bob")
+enemy4 = NodePath("../enemies_party/Bob")
+
+[node name="enemies_party" type="Node" parent="."]
+
+[node name="Bob" parent="enemies_party" instance=ExtResource("3_e4wji")]
+
+[connection signal="pressed" from="CanvasLayer/character_select/Button" to="battle_manager" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/character_select/Button2" to="battle_manager" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/character_select/Button3" to="battle_manager" method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/character_select/Button4" to="battle_manager" method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/combat_options/Attack" to="battle_manager" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/combat_options/Attack" to="battle_manager" method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy1" to="battle_manager" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy1" to="battle_manager" method="_on_enemy_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy2" to="battle_manager" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy2" to="battle_manager" method="_on_enemy_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy3" to="battle_manager" method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy3" to="battle_manager" method="_on_enemy_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy4" to="battle_manager" method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/enemies/enemy4" to="battle_manager" method="_on_enemy_4_pressed"]

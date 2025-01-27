@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6yb4557w3x6"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_0iuop"]
+
+[node name="Bob" type="Node"]
+script = ExtResource("1_0iuop")
+enemy_name = "bob"
+health = 10
